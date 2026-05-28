@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- dashboard-container START -->
+<div class="dashboard-container">
+
+  <!-- dashboard START -->
+  <div class="dashboard">
+
+    <!-- header-wrapper START -->
+    <div class="header-wrapper">
+
+      <!-- main-heading START -->
+      <h1 class="main-heading">
+        Real-Time Multi-Scale<br>Object Detection System<br>
+        <span>Using Deep Learning</span>
+      </h1>
+      <!-- main-heading END -->
+
+      <!-- about-logo-wrapper START -->
+      <span class="about-logo-wrapper">
+
+        <!-- user-manual logo START -->
+        <a href="{{ url_for('user') }}" title="User Manual">
+          <img src="{{ url_for('static', filename='images/S6.png') }}" alt="User Manual" class="header-logo " />
+         </a>
+
+
+        <!-- user-manual logo END -->
+
+        <!-- close-icons START -->
+        <div class="close-icons">
+
+          <!-- contact-us logo START -->
+       <a href="{{ url_for('contact') }}" title="Contact Us">
+         <img src="{{ url_for('static', filename='images/S7.png') }}" alt="Contact Icon" class="header-logo" />
+       </a>
+
+          <!-- contact-us logo END -->
+
+        </div>
+        <!-- close-icons END -->
+
+      </span>
+      <!-- about-logo-wrapper END -->
+
+    </div>
+    <!-- header-wrapper END -->
+
+    <!-- tile-grid START -->
+    <div class="tile-grid">
+
+      <!-- 🔷 Image Detection Tile START -->
+      <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="tile">
+
+        <!-- image icon START -->
+        <img src="{{ url_for('static', filename='images/8.png') }}" alt="Upload Image Icon"  class="icon">
+        <!-- image icon END -->
+
+        <!-- tile label START -->
+        <label class="tile-label"> <b>Image<br>Detection</b></label>
+        <!-- tile label END -->
+
+        <!-- file-upload-wrapper START -->
+        <div class="file-upload-wrapper">
+          <label for="fileInput" class="file-upload-label">Choose</label>
+          <input type="file" name="file" id="fileInput" class="file-input general-detect">
+        </div>
+        <!-- file-upload-wrapper END -->
+
+        <button type="submit" class="tile-button">Upload</button>
+      </form>
+      <!-- 🔷 Image Detection Tile END -->
+
+      <!-- 🔷 Video Detection Tile START -->
+       <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="tile">
+
+        <!-- image icon START -->
+        <img src="{{ url_for('static', filename='images/6.png') }}" alt="Upload Image Icon"  class="icon">
+        <!-- image icon END -->
+
+        <!-- tile label START -->
+        <label class="tile-label"> <b>Video<br>Detection</b></label>
+        <!-- tile label END -->
+
+        <!-- file-upload-wrapper START -->
+        <div class="file-upload-wrapper">
+          <label for="fileInput" class="file-upload-label">Choose</label>
+          <input type="file" name="file" id="fileInput" class="file-input general-detect">
+        </div>
+        <!-- file-upload-wrapper END -->
+
+        <button type="submit" class="tile-button">Upload</button>
+      </form>
+        <!-- file-upload-wrapper END -->
+
+     
+      <!-- 🔷 Video Detection Tile END -->
+
+      <!-- 🔷 Live Detection Tile START -->
+      <a href="{{ url_for('live_detection') }}" class="tile">
+        <img src="{{ url_for('static', filename='images/5.png') }}" alt="Live Detection Icon"  class="icon">
+        <label class="tile-label"><b>live<br>Detection</b></label>
+        <button type="submit" class="tile-button" style="margin-top: 18px;padding-right: 25px;padding-left: 25px;">Click</button>
+      </a>
+      <!-- 🔷 Live Detection Tile END -->
+
+      <!-- 🔷 Multi-Scale Detection Tile START -->
+      <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="tile">
+
+        <!-- icon START -->
+        <img src="{{ url_for('static', filename='images/7.png' ) }}" alt="Multi-Scaling Detection Icon"  class="icon">
+        <!-- icon END -->
+
+        <!-- tile label START -->
+        <label class="tile-label"><b>Multi-Scale<br>Detection</b></label>
+        <!-- tile label END -->
+
+        <!-- file-upload-wrapper START -->
+        <div class="file-upload-wrapper">
+          <label for="fileInputMulti" class="file-upload-label"> Choose</label>
+          <input type="file" name="file" id="fileInputMulti" class="file-input multiscale-detect" />
+        </div>
+        <!-- file-upload-wrapper END -->
+
+        <button type="submit" class="tile-button">Upload</button>
+      </form>
+      <!-- 🔷 Multi-Scale Detection Tile END -->
+
+      <!-- 🔷 Helmet Detection Tile START -->
+      <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="tile">
+
+        <!-- icon START -->
+        <img src="{{ url_for('static', filename='images/3.png') }}" alt="Helmet Detection Icon"  class="icon2">
+        <!-- icon END -->
+
+        <!-- tile label START -->
+        <label class="tile-label"><b>Helmet<br>Detection</b></label>
+        <!-- tile label END -->
+
+        <!-- file-upload-wrapper START -->
+        <div class="file-upload-wrapper">
+          <label for="fileInputHelmet" class="file-upload-label"> Choose</label>
+          <input type="file" name="file" id="fileInputHelmet" class="file-input helmet-detect" />
+        </div>
+        <!-- file-upload-wrapper END -->
+
+        <button type="submit" class="tile-button">Upload</button>
+      </form>
+      <!-- 🔷 Helmet Detection Tile END -->
+
+    </div>
+    <!-- tile-grid END -->
+
+  </div>
+  <!-- dashboard END -->
+
+</div>
+<!-- dashboard-container END -->
+
+<!-- ✅ JavaScript START -->
+<script>
+  const Uploads = "C:/Users/YourUserName/Desktop/Uploads/";
+
+  const folders = {
+    'general-detect': Uploads + "sample_images",
+    'helmet-detect': Uploads + "helmet",
+    'multiscale-detect': Uploads + "multiscale",
+    'video-detect': Uploads + "sample_videos"
+  };
+
+  document.querySelectorAll('.file-input').forEach(input => {
+    input.addEventListener('click', (e) => {
+      const inputClass = Array.from(e.target.classList).find(cls =>
+        folders.hasOwnProperty(cls)
+      );
+      if (inputClass) {
+        alert("📂 Please go to folder:\n" + folders[inputClass]);
+      }
+    });
+  });
+</script>
+<!-- ✅ JavaScript END -->
+
+{% endblock %}

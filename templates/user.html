@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='guistyle.css') }}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- dashboard-container START -->
+  <div class="dashboard-container">
+
+    <!-- dashboard START -->
+    <div class="dashboard">
+
+      <!-- background-shape START -->
+      <div class="background-shape"></div>
+      <!-- background-shape END -->
+
+      <!-- container START -->
+      <div class="container">
+
+        <header>
+          <h1><i class="fas fa-book-reader"></i> User Guide</h1>
+          <p></p>
+        </header>
+
+        <!-- guide-section START -->
+        <section class="guide-section">
+
+          <!-- card START -->
+          <div class="card">
+
+            <h2><i class="fas fa-brain"></i> Understanding The Project</h2>
+            <p style="text-align: justify;">
+              The system provides five detection types for versatile use. Image Detection allows users to upload a single image and detect objects with bounding boxes, labels, and distance estimation. Video Detection processes pre-recorded videos to identify objects frame by frame in real-time. Live Detection uses  device’s webcam to perform continuous object detection on live camera feed. Multi-Scale Detection enhances accuracy by detecting objects of various sizes within an image and video, ensuring better recognition in complex scenes. Finally, Helmet Detection is specifically designed to identify individuals wearing or not wearing helmets, making it ideal for safety compliance in environments like construction sites.
+            </p>
+
+            <h2><i class="fas fa-cogs"></i> Project Workflow</h2>
+
+            <!-- steps START -->
+            <div class="steps">
+
+              <div class="step"><strong>Step 1:</strong> Launch the web application in your browser.</div>
+              <div class="step"><strong>Step 2:</strong> Select the type of input you want to process – Image, Video, or Live Webcam.</div>
+              <div class="step"><strong>Step 3:</strong> Click on the <em>"Choose File"</em> button to begin file selection.</div>
+
+              <div class="step">
+                <strong>Step 4:</strong> A popup appears showing the folder path guidelines:
+                <ul>
+                  <li><strong>Sample images:</strong> Placed in <code>static/uploads/images/</code></li>
+                  <li><strong>Sample videos:</strong> Placed in <code>static/uploads/videos/</code></li>
+                  <li><strong>Sample images and videos for Multi-Scale Detection:</strong> Placed in <code>static/uploads/multiscale/</code></li>
+                  <li><strong>Sample images and videos for Helmet Detection:</strong> Stored in <code>static/uploads/helmet/</code></li>
+                </ul>
+              </div>
+
+              <div class="step"><strong>Step 5:</strong> After selecting the file, click the <em>"Upload"</em> button to start the detection process.</div>
+              <div class="step"><strong>Step 6:</strong> The system processes the file using Real-Time Multi-scaling Object detection Model Using Deep Learning.</div>
+              <div class="step"><strong>Step 7:</strong> Once processing is complete, the detection results will be displayed on the screen with bounding boxes and labels.</div>
+
+            </div>
+            <!-- steps END -->
+
+            <h2><i class="fas fa-chart-bar"></i> Understanding the Detection Results</h2>
+
+            <ul style="margin-top: 20px; color: #e0e0e0; font-size: 1rem; line-height: 1.6;">
+              <li><strong>Label:</strong> COCO labels appear in lowercase, while custom dataset labels are Capitalized for clarity.</li>
+              <li><strong>Confidence Score:</strong> A numeric value (e.g., <code>0.91</code>) showing how confident the model is about the detection.</li>
+              <li><strong>Distance:</strong> Estimated distance in meters, shown in <span style="color: #4fa3ff;"><strong>blue text</strong></span> as <code>Distance: 2.5m</code>.</li>
+            </ul>
+
+            <h2><i class="fas fa-exclamation-triangle"></i> Limitations</h2>
+
+            <ul>
+              <li><strong>Smoke Interference:</strong> Heavy smoke can obstruct object visibility, reducing detection accuracy.</li>
+              <li><strong>Poor Lighting Conditions:</strong> Low or uneven lighting can negatively affect model predictions.</li>
+              <li><strong>Weather Conditions:</strong> Rain, fog, or dust can blur the scene and lead to incorrect detections.</li>
+              <li><strong>Hardware Requirements:</strong> High-quality camera sensors are essential for accurate distance estimation and detection.</li>
+            </ul>
+
+          </div>
+          <!-- card END -->
+
+        </section>
+        <!-- guide-section END -->
+
+      </div>
+      <!-- container END -->
+
+    </div>
+    <!-- dashboard END -->
+
+  </div>
+  <!-- dashboard-container END -->
+
+</body>
+</html>
